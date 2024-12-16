@@ -1,0 +1,156 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab560
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\fs26 \cf0 # Product Requirements Document (PRD)  \
+**Product Name:** Fitness Tracker for iPhone & Apple Watch  \
+**Version:** 1.0  \
+\
+---\
+\
+## 1. Overview  \
+The Fitness Tracker app allows users to track their cycling and swimming activities through data collected from the Apple Watch and displayed on the iPhone. Key features include metric visualization, achievement tracking, and user profiles.  \
+\
+---\
+\
+## 2. Features & Functionality  \
+\
+### Mobile App (iPhone)  \
+\
+#### Frontend Requirements  \
+**1. Home Tab (Metrics Dashboard)**  \
+- **Purpose:** Display exercise metrics in an easy-to-read, visually engaging format.  \
+- **Features:**  \
+  - Display metrics for cycling and swimming:  \
+    - Total Time  \
+    - Distance  \
+    - Speed (average and current)  \
+    - Heart Rate (average and current)  \
+  - **Diagram Style:**  \
+    - Line graphs for speed and heart rate trends.  \
+    - Pie chart for total time split between exercises.  \
+    - Bar chart for distance comparison between cycling and swimming.  \
+  - Time filters: Today, Weekly, Monthly views.  \
+  - Ability to toggle between cycling and swimming metrics.  \
+\
+**2. Achievements Tab**  \
+- **Purpose:** Gamify exercise by tracking progress toward predefined achievements.  \
+- **Features:**  \
+  - Display progress toward five achievement levels for each exercise:  \
+    - **Swim Levels (by Distance):** Level thresholds (e.g., 5 km, 10 km, 20 km, etc.).  \
+    - **Cycle Levels (by Average Speed):** Thresholds (e.g., 15 km/h, 20 km/h, 25 km/h, etc.).  \
+  - Visual progress bar for each level.  \
+  - Notification badge when a level is achieved.  \
+\
+**3. Profile Tab**  \
+- **Purpose:** Manage user identity and access.  \
+- **Features:**  \
+  - **Login/Sign-Up:**  \
+    - Email/password login or social login (Apple ID).  \
+  - Display basic user info (name, photo, age, and fitness preferences).  \
+  - Logout functionality.  \
+\
+#### Backend Requirements  \
+- **API Endpoints:**  \
+  - **Authentication:** Login, logout, and token management.  \
+  - **Data Sync:** Receive exercise metrics from Apple Watch every minute.  \
+  - **Achievement Calculation:** Process and store progress toward levels.  \
+  - **Dashboard Data:** Fetch metrics and historical data for visualizations.  \
+\
+- **Database:**  \
+  - **Users:** Stores user credentials, profiles, and preferences.  \
+  - **Metrics:** Stores data for time, distance, speed, and heart rate.  \
+  - **Achievements:** Tracks user progress toward levels.  \
+\
+---\
+\
+### Apple Watch App  \
+\
+#### Frontend Requirements  \
+**1. Home Screen:**  \
+- Display real-time metrics for the ongoing activity:  \
+  - Time elapsed, distance covered, current speed, and heart rate.  \
+- Two modes: Cycling and Swimming (auto-detect or manual switch).  \
+- Sync data to the mobile app every minute.  \
+\
+**2. Settings:**  \
+- Toggle metrics to display (e.g., show/hide heart rate).  \
+- Manual sync option if automatic sync fails.  \
+\
+#### Backend Requirements  \
+- **WatchOS Integration:**  \
+  - **HealthKit:** Access cycling and swimming data (time, distance, speed, and heart rate).  \
+  - **CoreMotion:** For activity type detection (cycling/swimming).  \
+  - **Sync API:** Push data to the iPhone app every minute.  \
+\
+---\
+\
+## 3. User Stories  \
+\
+### For the Mobile App (iPhone)  \
+- **As a user**, I want to log in and see my profile data so I can customize my experience.  \
+- **As a user**, I want to visualize my cycling and swimming metrics on the dashboard to track my progress.  \
+- **As a user**, I want to view achievements and progress bars so I feel motivated to improve.  \
+\
+### For the Apple Watch App  \
+- **As a user**, I want real-time metrics displayed while exercising so I can monitor my performance.  \
+- **As a user**, I want my metrics synced to the iPhone app so I can review my data later.  \
+\
+---\
+\
+## 4. Design Requirements  \
+\
+### iPhone Screens  \
+1. **Home Tab (Metrics Dashboard):**  \
+   - Line graph for speed and heart rate.  \
+   - Pie chart for exercise split.  \
+   - Bar chart for distances.  \
+   - Toggle between Today/Weekly/Monthly views.  \
+\
+2. **Achievements Tab:**  \
+   - List of achievements with progress bars.  \
+   - Level badges (grayed-out for incomplete, highlighted for completed).  \
+\
+3. **Profile Tab:**  \
+   - Simple login form.  \
+   - Editable profile info (name, age, fitness preferences).  \
+\
+---\
+\
+### Apple Watch Screens  \
+1. **Home Screen:**  \
+   - Metrics displayed dynamically during the activity.  \
+   - Manual switch for exercise type.  \
+\
+2. **Settings:**  \
+   - Simple toggle for displaying/hiding metrics.  \
+\
+---\
+\
+## 5. Technical Considerations  \
+\
+### iPhone App  \
+- **Frameworks:** SwiftUI for UI; Combine for reactive data updates.  \
+- **Storage:** CoreData or Realm for offline access.  \
+\
+### Apple Watch App  \
+- **Frameworks:** WatchKit for UI; HealthKit and CoreMotion for data.  \
+- **Communication:** WatchConnectivity for syncing with iPhone.  \
+\
+### Backend  \
+- **Tech Stack:** Node.js/Express with MongoDB or Firebase.  \
+- **Authentication:** JWT-based or OAuth2 for social login.  \
+- **Data Processing:** Real-time data aggregation for achievements.  \
+\
+---\
+\
+## 6. Testing & QA  \
+- Unit tests for calculation logic (e.g., achievements).  \
+- Integration tests for data sync between iPhone and Watch.  \
+- UI tests for both mobile and watch apps.  \
+\
+---}
